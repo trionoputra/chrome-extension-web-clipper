@@ -1,0 +1,140 @@
+<html>
+    <head>
+        
+        <script src='highlight.min.js'></script>
+        <script src='jquery-3.4.1.min.js'></script>
+        <script src='quill.min.js'></script>
+
+        <script src='cropper.min.js'></script>
+        <script src='jquery-cropper.js'></script>
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <script src='jquery.tagsinput.min.js'></script>
+
+        <script src='config.js'></script>
+
+
+        <link rel="stylesheet" type="text/css" href="quill.snow.css" />
+        <link rel="stylesheet" type="text/css" href="cropper.min.css" />
+
+        <link rel="stylesheet" type="text/css" href="jquery.tagsinput.min.css" />
+        <link rel="stylesheet" type="text/css" href="popup.css" />
+
+    </head>
+    <body>
+        <div class='container'>
+            <div class='container-right'>
+                <div class="userlogin-wrapper">Hi! <span id="view-name"></span> <a class="logout" href="#">(logout)</a></div>
+                <div class="goto-wrapper"><a class="goto" href="#">Go to KebalenTools.com &#8594;</a></div>
+                <div style="clear:both"></div>
+                <div class="form-group message-outer" style="display:none;">
+                    <div class="message-wraper"></div>
+                </div>
+                <div class="form-group name">
+                        <input type="text" name="page_name" placeholder="Enter Page Name" />
+                        <span class="span-error"></span>
+                </div>
+                <div class="edito-wrapper">
+                    <div id="toolbar-container">
+                            <span class="ql-formats">
+                                    <select class="ql-font"></select>
+                                    <select class="ql-size"></select>
+                                  </span>
+                                  <span class="ql-formats">
+                                    <button class="ql-bold"></button>
+                                    <button class="ql-italic"></button>
+                                    <button class="ql-underline"></button>
+                                    <button class="ql-strike"></button>
+                                  </span>
+                                  <span class="ql-formats">
+                                    <select class="ql-color"></select>
+                                    <select class="ql-background"></select>
+                                  </span>
+                                  <span class="ql-formats">
+                                    <button class="ql-header" value="1"></button>
+                                    <button class="ql-header" value="2"></button>
+                                    <button class="ql-blockquote"></button>
+                                    <button class="ql-code-block"></button>
+                                  </span>
+                                  <span class="ql-formats">
+                                    <button class="ql-list" value="ordered"></button>
+                                    <button class="ql-list" value="bullet"></button>
+                                    <button class="ql-indent" value="-1"></button>
+                                    <button class="ql-indent" value="+1"></button>
+                                  </span>
+                                  <span class="ql-formats">
+                                    <button class="ql-direction" value="rtl"></button>
+                                    <select class="ql-align"></select>
+                                  </span>
+                                  <span class="ql-formats">
+                                    <button class="ql-link"></button>
+                                  </span>
+                                  <span class="ql-formats">
+                                    <button class="ql-clean"></button>
+                                  </span>
+                    </div>
+                    <div id="editor-container">
+                    </div>
+                    <div class="doc-option-wrapper">
+                        <div style="clear:both"></div>
+                        <div class="form-group doc_name_wrapper doc_selected">
+                            <input type="text" name="tag_name" placeholder="Enter Tags"/>
+                        </div>
+                        <div class="current-url"></div>
+                    </div>
+                    <div class="form-group button-save" style="text-align: center;">
+                            <button type="button" class='button-save-ajax' name="button_save">SAVE</button>
+                            <img class="loading-button" style="display: none;" src="images/loading.gif" width="30"/>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div style="clear:both"></div>
+            </div>
+            <div class='container-left'>
+                    <div class="viewtype-wrapper">
+                        <label><input type="radio" name="viewType" value="viewPort" checked/> ViewPort Only &nbsp;&nbsp; </label>
+                        <label><input type="radio" name="viewType" value="full" /> Full Page </label>
+                        <button type="button" class="btn-download" name="btn-download" ><span class="fa fa-download"></span> Download</button>
+                    </div>
+                    <div class="image-wrapper">
+                        <img src="images/placeholder.jpg" id='image-preview' width="340" height="220"/>
+                        <div class="loading">
+                            <img src="images/loading.gif" width="60">
+                        </div>
+                    </div>
+                    <div class="docs-toggles">
+                        <div class="button-group">
+                            <button type="button" name="btn-rasio16" value="1.7777777777777777">16:9</button>
+                            <button type="button" name="btn-rasio4" value="1.3333333333333333">4:3</button>
+                            <button type="button" name="btn-rasio1"value="1">1:1</button>
+                            <button type="button" name="btn-rasio2" value="0.6666666666666666">2:3</button>
+                            <button type="button" name="btn-rasiofree" value="NaN">Free</button>
+                        </div>
+                        <div class="button-group">
+                            <button type="button" name="btn-move" ><span class="fa fa-arrows"></span></button>
+                            <button type="button" name="btn-drag" ><span class="fa fa-crop"></span></button>
+                        </div>
+                        <div class="button-group">
+                                <button type="button" name="btn-zoom-plus" ><span class="fa fa-search-plus"></span></button>
+                                <button type="button" name="btn-zoom-min" ><span class="fa fa-search-minus"></span></button>
+                        </div>
+                        <div class="button-group">
+                            <button type="button" name="btn-rotate45" ><span class="fa fa-rotate-right"></button>
+                            <button type="button" name="btn-rotate-min45" ><span class="fa fa-rotate-left"></span></button>
+                        </div>
+                        <div class="button-group">
+                            <button type="button" scaleY="1" name="btn-flip-v" ><span class="fa fa-arrows-v"></button>
+                            <button type="button" scaleX="1"  name="btn-flip-h" ><span class="fa fa-arrows-h"></button>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    
+                    <div class="docs-preview ">
+                        <div class="img-preview preview-lg"></div>
+                    </div>
+                    <div class="clearfix"></div>
+            </div>   
+            <div class="clearfix"></div>
+        </div>
+        <script src='popup.js'></script>
+    </body>
+  </html>

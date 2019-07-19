@@ -1,0 +1,26 @@
+{
+    "manifest_version": 2,
+    "name": "KebalenTools",
+    "icons":{
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+  },
+    "version": "0.1",
+    "permissions" : ["nativeMessaging","storage","activeTab","webNavigation","http://*/",
+        "https://*/"],
+    "content_scripts": [
+        {
+          "matches": [
+            "<all_urls>"
+          ],
+          "js": ["jquery-3.4.1.min.js","jquery.tagsinput.min.js","html2canvas.js", "content.js"]
+        }
+      ],
+      "browser_action": {
+        "default_icon": "icon.png"
+      },
+      "background": {
+        "scripts": ["background.js"]
+      }
+  }
