@@ -1,1 +1,1 @@
-# chrome-extension-web-clipper
+# Chrome Extension - Web Clipper
